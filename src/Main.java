@@ -59,7 +59,7 @@ public static void main (String []args) {
             case "SkyBreakers":
                 IO.println("[(==========================)]");
                 IO.println(" |                          | ");
-                IO.println(" |  Colocarei a Lei acima   | ");
+                IO.println(" |     Colocarei a Lei      | ");
                 IO.println(" |      acima de tudo       | ");
                 IO.println(" |                          | ");
                 IO.println("[(==========================)]");
