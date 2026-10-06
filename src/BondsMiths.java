@@ -21,8 +21,6 @@ public class BondsMiths extends Radiantes{
                 " e me levantarei cada vez como um homem melhor";
 
 
-        BondsMiths bondsMiths = new BondsMiths();
-
     }
 
     @Override
@@ -43,7 +41,7 @@ public class BondsMiths extends Radiantes{
         }
 
 
-        return false;
+        return true;
     }
 
 

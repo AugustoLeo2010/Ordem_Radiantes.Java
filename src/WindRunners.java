@@ -22,8 +22,6 @@ public WindRunners() {
 
     this.quartoJuramento = "Eu não posso salvar todos";
 
-    WindRunners windRunners = new WindRunners();
-
 
 }
 
@@ -44,12 +42,12 @@ public boolean verificarJuramento(String resposta){
         return true;
     }
 
-    if (nivelJuramento == 2 && resposta.equalsIgnoreCase(quartoJuramento)){
+    if (nivelJuramento == 3 && resposta.equalsIgnoreCase(quartoJuramento)){
         nivelJuramento++;
         return true;
     }
 
-    return false;
+    return true;
 }
 
 

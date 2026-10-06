@@ -22,7 +22,6 @@ public class LightWeavers extends Radiantes{
 
         this.quartoJuramento = "Diga sua Verdade";
 
-        LightWeavers lightweavers = new LightWeavers();
 
     }
 
@@ -43,12 +42,12 @@ public class LightWeavers extends Radiantes{
             return true;
         }
 
-        if (nivelJuramento == 2 && resposta.equalsIgnoreCase(quartoJuramento)){
+        if (nivelJuramento == 3 && resposta.equalsIgnoreCase(quartoJuramento)){
             nivelJuramento++;
             return true;
         }
 
-        return false;
+        return true;
     }
 
 
