@@ -28,6 +28,7 @@ public WindRunners() {
 @Override
 public boolean verificarJuramento(String resposta){
 
+
     if (resposta == null) {
         return false;
     }
@@ -46,7 +47,6 @@ public boolean verificarJuramento(String resposta){
         nivelJuramento++;
         return true;
     }
-
     return true;
 }
 

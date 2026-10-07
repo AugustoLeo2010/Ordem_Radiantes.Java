@@ -11,16 +11,10 @@ public class LightWeavers extends Radiantes{
     public LightWeavers() {
         super("Teceluzes", "Verdade", "Criptidios");
 
-        this.palavraChave = "Justiça";
-        this.poderes = "Adesão e Gravitação";
+        this.palavraChave = "Verdade";
+        this.poderes = "Ilusão e Transmutação";
 
         this.nivelJuramento = 1;
-
-        this.segundoJuramento = " Diga sua Verdade";
-
-        this.terceiroJuramento = "Diga sua Verdade";
-
-        this.quartoJuramento = "Diga sua Verdade";
 
 
     }
