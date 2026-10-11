@@ -11,11 +11,18 @@ public class LightWeavers extends Radiantes{
     public LightWeavers() {
         super("Teceluzes", "Verdade", "Criptidios");
 
-        this.palavraChave = "Verdade";
-        this.poderes = "Ilusão e Transmutação";
+        this.palavraChave = "Justiça";
+        this.poderes = "Adesão e Gravitação";
 
         this.nivelJuramento = 1;
 
+        this.segundoJuramento = " Diga sua Verdade";
+
+        this.terceiroJuramento = "Diga sua Verdade";
+
+        this.quartoJuramento = "Diga sua Verdade";
+
+        LightWeavers lightweavers = new LightWeavers();
 
     }
 
@@ -36,12 +43,12 @@ public class LightWeavers extends Radiantes{
             return true;
         }
 
-        if (nivelJuramento == 3 && resposta.equalsIgnoreCase(quartoJuramento)){
+        if (nivelJuramento == 2 && resposta.equalsIgnoreCase(quartoJuramento)){
             nivelJuramento++;
             return true;
         }
 
-        return true;
+        return false;
     }
 
 

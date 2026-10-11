@@ -22,6 +22,7 @@ public class SkyBreakers extends Radiantes{
 
         this.quartoJuramento = "Seguirei as Ordens de quem Tiver a razão";
 
+        SkyBreakers skyBreakers = new SkyBreakers();
 
     }
 
@@ -42,12 +43,12 @@ public class SkyBreakers extends Radiantes{
             return true;
         }
 
-        if (nivelJuramento == 3 && resposta.equalsIgnoreCase(quartoJuramento)){
+        if (nivelJuramento == 2 && resposta.equalsIgnoreCase(quartoJuramento)){
             nivelJuramento++;
             return true;
         }
 
-        return true;
+        return false;
     }
 
 

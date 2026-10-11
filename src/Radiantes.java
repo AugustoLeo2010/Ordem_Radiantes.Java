@@ -36,5 +36,9 @@ public String getPrimeiro_Ideal(){
 
     public abstract boolean verificarJuramento(String resposta);
 
+public void Lutar() {
+
+}
+
 
 }
