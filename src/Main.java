@@ -1,7 +1,20 @@
 public static void main (String []args) {
 
-    String nome = IO.readln("DIGA SEU NOME: ");
-    Personagem personagem = new Personagem(nome);
+    String nome;
+
+    while (true) {
+       nome = IO.readln("DIGA SEU NOME: ");
+
+        if (nome != null && !nome.isBlank()) {
+            nome = nome.trim();
+            break;
+
+        }
+        IO.println("O nome não pode ser vazio, tente novamente");
+    }
+
+        Personagem personagem = new Personagem(nome);
+
 
     String menu;
 
@@ -67,7 +80,7 @@ public static void main (String []args) {
             IO.println("atacar - defender - esquivar - fugir");
             String acao = IO.readln("Escolha sua ação: ");
 
-            if (acao.equals("")) {
+            if (acao == null || acao.isBlank()) {
                 IO.println("You died");
                 System.exit(0);
 
@@ -85,8 +98,10 @@ public static void main (String []args) {
 
                     } else if (escolha.trim().equalsIgnoreCase("ataque base")) {
                         IO.println("você utilizou ataque base");
-                        personagem.RegistrarCombate();
+                        personagem.registrarCombate();
                         IO.println(nome + " ganhou a luta");
+                    } else {
+                        IO.println("Opção invalida");
                     }
 
                     // com 1ºIdeal
@@ -101,19 +116,33 @@ public static void main (String []args) {
 
                     } else if (escolha.trim().equalsIgnoreCase("ataque base")) {
                         IO.println("Você utilizou o ataque base");
-                        personagem.RegistrarCombate();
+                        personagem.registrarCombate();
                         IO.println(nome + " ganhou a luta");
 
                     } else if (escolha.trim().equalsIgnoreCase("gravitacao")) {
-                        IO.println("Você usou a gravitacao para dar impulso e acertar um soco mais potente");
-                        personagem.RegistrarCombate();
-                        IO.println(nome + " ganhou a luta");
+                       boolean sucesso = personagem.usarGravitacao();
 
-                    } else if (escolha.trim().equalsIgnoreCase("fixacao")) {
-                        IO.println("Você grudou o inimigo na parede e acertou multiplos socos");
-                        personagem.RegistrarCombate();
+                    if (sucesso) {
+                        IO.println("A Gravitação funcionou! Seu golpe acertou o inimigo.");
+                        personagem.registrarCombate();
                         IO.println(nome + " ganhou a luta");
+                    } else {
+                        IO.println("A Gravitação falhou!");
                     }
+
+                } else if (escolha.trim().equalsIgnoreCase("fixacao")) {
+                       boolean sucesso = personagem.usarFixacao();
+
+                       if (sucesso) {
+                           IO.println("Você usou a Fixacao, prendeu seu inimigo na parede e deu multiplos socos nele");
+                           personagem.registrarCombate();
+                           IO.println(nome + " ganhou a luta");
+                       } else {
+                           IO.println("A Fixacao falhou!");
+                       }
+                    }
+                } else {
+                    IO.println("Ataque invalido");
                 }
 
             } else if (acao.equalsIgnoreCase("defender")) {
@@ -123,13 +152,14 @@ public static void main (String []args) {
 
 
             } else if (acao.equalsIgnoreCase("fugir")) {
+                IO.println(nome + " Fugiu");
 
-
-            }
-
+            } else {
+            IO.println("Opção invalida");
+        }
 
         } else if (menu.equals("4")) {
-            personagem.Status();
+            personagem.mostrarStatus();
 
 
         } else if (menu.equals("5")) {
@@ -151,6 +181,8 @@ public static void main (String []args) {
             } else {
                 IO.println("ESTAS PALAVRAS NÃO SÃO ACEITAS");
             }
+        } else {
+            IO.println("Escolha a opção do menu");
         }
 
 

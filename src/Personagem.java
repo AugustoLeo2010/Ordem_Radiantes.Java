@@ -7,6 +7,9 @@ public class Personagem {
     private boolean primeiroIdeal;
 
     public Personagem(String nome) {
+        if (nome == null || nome.isBlank()) {
+            throw new IllegalArgumentException("O nome não pode estar vazio");
+        }
     this.nome = nome;
     this.combateC = 0;
     this.vida = 100;
@@ -16,7 +19,7 @@ public class Personagem {
 
 }
 
-public void RegistrarCombate() {
+public void registrarCombate() {
         combateC++;
 }
 
@@ -25,6 +28,7 @@ public int getCombateC() {
 }
 
 public boolean usarGravitacao() {
+
         if(!primeiroIdeal) {
             IO.println("VOCÊ NÃO DISSE O PRIMEIRO IDEAL");
             return false;
@@ -35,17 +39,33 @@ public boolean usarGravitacao() {
             IO.println("Você não tem estamina o suficiente, o poder falhou");
             return false;
 
-        } else if (estamina >= 25) {
+        }
             estamina -= 25;
 
-        }
-
     return Math.random() < 0.5;
+
 }
 
 public boolean usarFixacao() {
-        return false;
-}
+
+
+        if (!primeiroIdeal) {
+            IO.println("VOCÊ NÃO DISSE O PRIMEIRO IDEAL");
+            return false;
+        }
+
+        if (estamina < 25) {
+            estamina = 0;
+            IO.println("Você não tem estamina suficiente, o poder falhou.");
+            return false;
+        }
+
+        estamina -= 25;
+
+        return Math.random() < 0.5;
+    }
+
+
 
     public boolean podeFalarPrimeiroIdeal() {
         return combateC >= 1 && !primeiroIdeal;
@@ -65,7 +85,7 @@ public boolean usarFixacao() {
         return primeiroIdeal;
     }
 
-    public void Status() {
+    public void mostrarStatus() {
         IO.println("{[=================]}");
         IO.println(" |                 |");
         IO.println(" |   nome: " + nome + " |");

@@ -39,6 +39,17 @@ public static String getPrimeiro_Ideal(){
 
     public abstract boolean verificarJuramento(String resposta);
 
+private String getIdeal() {
+    return ideal;
+}
+
+private String getOrdem() {
+    return ordem;
+}
+
+private String getEspreno() {
+    return espreno;
+}
 
 
 }
