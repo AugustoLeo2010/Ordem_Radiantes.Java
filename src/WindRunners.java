@@ -1,70 +1,62 @@
-public class WindRunners extends Radiantes{
+public class WindRunners extends Radiantes {
 
-private int nivelJuramento;
-private String segundoJuramento;
-private String terceiroJuramento;
-private String quartoJuramento;
+    private int nivelJuramento;
+    private String segundoJuramento;
+    private String terceiroJuramento;
+    private String quartoJuramento;
 
-private String palavraChave;
-private String poderes;
-
-public WindRunners() {
-    super("Corredores dos Ventos", "Proteger", "Honra");
-
-    this.palavraChave = "Proteger";
-    this.poderes = "Adesão e Gravitação";
-
-    this.nivelJuramento = 1;
-
-    this.segundoJuramento = "Protegerei aqueles que não podem se proteger";
-
-    this.terceiroJuramento = "Protegerei até mesmo aqueles que eu odeio";
-
-    this.quartoJuramento = "Eu não posso salvar todos";
-
-
-}
-
-    public void segundoIdeal() {
-
-    IO.println("{[====================]}");
-    IO.println(" |                    |");
-    IO.println(" | Protegerei aqueles |");
-    IO.println(" |  Que não podem se  |");
-    IO.println(" |      Proteger      |");
-    IO.println(" |                    |");
-    IO.println("{[====================]}");
-
+    public WindRunners() {
+        super("Corredores dos Ventos", "Proteger", "Espreno de Honra", "Adesao e Gravitacao");
+        this.nivelJuramento = 1;
+        this.segundoJuramento = "Protegerei aqueles que nao podem se proteger";
+        this.terceiroJuramento = "Protegerei ate mesmo aqueles que eu odeio";
+        this.quartoJuramento = "Eu não posso salvar todos";
     }
 
+    @Override
+    public int getNivelJuramento() {
+        return nivelJuramento;
+    }
 
+    @Override
+    public void exibirProximoJuramento() {
+        IO.println("{[====================================]}");
+        if (nivelJuramento == 1) {
+            IO.println(" |  2º JURAMENTO:                      |");
+            IO.println(" |  Protegerei aqueles que nao podem   |");
+            IO.println(" |  se proteger                        |");
+        } else if (nivelJuramento == 2) {
+            IO.println(" |  3º JURAMENTO:                      |");
+            IO.println(" |  Protegerei até mesmo aqueles       |");
+            IO.println(" |  que eu odeio                       |");
+        } else if (nivelJuramento == 3) {
+            IO.println(" |  4º JURAMENTO:                      |");
+            IO.println(" |  Eu nao posso salvar todos          |");
+        }
+        IO.println("{[====================================]}");
+    }
 
+    @Override
+    public boolean verificarJuramento(String resposta) {
+        if (resposta == null || resposta.isBlank()) {
+            return false;
+        }
 
-@Override
-public boolean verificarJuramento(String resposta){
+        String resp = resposta.trim();
 
-    if (resposta == null) {
+        if (nivelJuramento == 1 && resp.equalsIgnoreCase(segundoJuramento)) {
+            nivelJuramento++;
+            return true;
+        }
+        if (nivelJuramento == 2 && resp.equalsIgnoreCase(terceiroJuramento)) {
+            nivelJuramento++;
+            return true;
+        }
+        if (nivelJuramento == 3 && resp.equalsIgnoreCase(quartoJuramento)) {
+            nivelJuramento++;
+            return true;
+        }
+
         return false;
     }
-
-    if (nivelJuramento == 1 && resposta.equalsIgnoreCase(segundoJuramento)){
-        nivelJuramento++;
-        return true;
-    }
-
-    if (nivelJuramento == 2 && resposta.equalsIgnoreCase(terceiroJuramento)){
-        nivelJuramento++;
-        return true;
-    }
-
-    if (nivelJuramento == 3 && resposta.equalsIgnoreCase(quartoJuramento)){
-        nivelJuramento++;
-        return true;
-    }
-
-    return false;
-}
-
-
-
 }

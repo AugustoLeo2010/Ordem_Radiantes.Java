@@ -1,239 +1,252 @@
-public static void main (String []args) {
+public class Main {
 
-    String nome;
+    public static void main(String[] args) {
 
-    while (true) {
-       nome = IO.readln("DIGA SEU NOME: ");
+        String nome;
 
-        if (nome != null && !nome.isBlank()) {
-            nome = nome.trim();
-            break;
-
+        while (true) {
+            nome = IO.readln("DIGA SEU NOME: ");
+            if (nome != null && !nome.isBlank()) {
+                nome = nome.trim();
+                break;
+            }
+            IO.println("O nome não pode ser vazio, tente novamente.");
         }
-        IO.println("O nome não pode ser vazio, tente novamente");
-    }
 
         Personagem personagem = new Personagem(nome);
-        Radiantes ordemEscolhida = null;
+        String menu;
+
+        while (true) {
+            IO.println("\n{[====================]}");
+            IO.println(" |      " + personagem.getNome() + "       |");
+            IO.println(" |                    |");
+            IO.println(" |     1.Historia     |");
+            IO.println(" |   2.Informaçoes    |");
+            IO.println(" |      3.Lutar       |");
+            IO.println(" |     4.Status       |");
+            IO.println(" |      5.Sair        |");
+
+            if (personagem.podeFalarPrimeiroIdeal()) {
+                IO.println(" |  6.Primeiro Ideal  |");
+                IO.println("{[====================]}");
+                menu = IO.readln("O que você vai fazer (1-6): ");
+
+            } else if (personagem.segundoIdealLiberado()) {
+                IO.println(" |  6.Escolher Ordem  |");
+                IO.println("{[====================]}");
+                menu = IO.readln("O que você vai fazer (1-6): ");
+
+            } else if (personagem.proximoIdealLiberado()) {
+                IO.println(" |  6.Proximo Ideal   |");
+                IO.println("{[====================]}");
+                menu = IO.readln("O que você vai fazer (1-6): ");
+
+            } else {
+                IO.println("{[====================]}");
+                menu = IO.readln("O que você vai fazer (1-5): ");
+            }
 
 
-    String menu;
+            if (menu == null) continue;
 
-    while (true) {
+            switch (menu.trim()) {
 
-        IO.println("{[====================]}");
-        IO.println(" |      " + nome + "       |");
-        IO.println(" |                    |");
-        IO.println(" |     1.Historia     |");
-        IO.println(" |   2.Informaçoes    |");
-        IO.println(" |      3.Lutar       |");
-        IO.println(" |     4.Status       |");
-        IO.println(" |      5.Sair        |");
-
-        if (personagem.podeFalarPrimeiroIdeal()) {
-            IO.println(" |  6.Primeiro Ideal  |");
-        } else if (personagem.segundoIdeal() && ordemEscolhida == null) {
-            IO.println(" |  6.Escolher Ordem  |");
-        } else {
-            IO.println(" |    6.Juramentos    |");
-        }
-
-        IO.println(" |                    |");
-        IO.println("{[====================]}");
-
-        if (personagem.podeFalarPrimeiroIdeal()) {
-            IO.println("1/2/3/4/5/6");
-            menu = IO.readln("Oque você vai fazer: ");
-        } else {
-            IO.println("1/2/3/4/5");
-            menu = IO.readln("Oque você vai fazer: ");
-        }
-
-        if (menu.equals("1")) {
-            IO.println("{[======================================]}");
-            IO.println(" |     Milenios atrás, na época das     |");
-            IO.println(" |    Desolações, a humanidade estava   |");
-            IO.println(" |      prestes a ser extinta pelos     |");
-            IO.println(" |      Esvasiadores... Até que Deus    |");
-            IO.println(" |     deu vida aos chamados Arautos,   |");
-            IO.println(" |     10 humanos imortais capazes de   |");
-            IO.println(" |       se vincular aos Esprenos,      |");
-            IO.println(" |      e aprisionar os Esvasiadores    |");
-            IO.println(" |    no Braize... E ao aprisiona-los   |");
-            IO.println(" |     a cada Desolação que passava     |");
-            IO.println(" |     sofrerem todo tipo de tortura    |");
-            IO.println(" |  para nos livrar da guerra e da dor  |");
-            IO.println(" |     e nos dar esperança novamente    |");
-            IO.println(" |   ...até que a proxima Desolação...  |");
-            IO.println(" |   ............começasse............  |");
-            IO.println("{[======================================]}");
-
-        } else if (menu.equals("2")) {
-            IO.println("{[=======================]}");
-            IO.println(" |  Um homem nascido em  |");
-            IO.println(" |  uma vila do interior |");
-            IO.println(" |     de Roshar, um     |");
-            IO.println(" |    Zé-Ninguem, que    |");
-            IO.println(" |   que foi convocado   |");
-            IO.println(" |   para lutar contra   |");
-            IO.println(" |    os Parshedianos    |");
-            IO.println(" |    e vingar o Rei     |");
-            IO.println("{[=======================]}");
-
-        } else if (menu.equals("3")) {
-            IO.println("!!!UM PARSHEDIANO APARECEU!!!");
-            IO.println("atacar - defender - esquivar - fugir");
-            String acao = IO.readln("Escolha sua ação: ");
-
-            if (acao == null || acao.isBlank()) {
-                IO.println("You died");
-                System.exit(0);
-
-            } else if (acao.equalsIgnoreCase("atacar")) {
-
-                // sem 1ºIdeal
-                if(!personagem.temPrimeiroIdeal()) {
-                    IO.println("[ataque base]");
-                    String escolha = IO.readln("escolha sua ação: ");
-
-                    if (escolha == null) {
-                        IO.println("Voce não fez nada");
-                        IO.println("Você recebeu um golpe critico e morreu");
-                        System.exit(0);
-
-                    } else if (escolha.trim().equalsIgnoreCase("ataque base")) {
-                        IO.println("você utilizou ataque base");
-                        personagem.registrarCombate();
-                        IO.println(nome + " ganhou a luta");
-                    } else {
-                        IO.println("Opção invalida");
-                    }
-
-                    // com 1ºIdeal
-                } else if (personagem.temPrimeiroIdeal()) {
-                    IO.println("[ataque base - gravitacão - fixacão]");
-                    String escolha = IO.readln("escolha sua ação: ");
-
-                    if (escolha == null) {
-                        IO.println("Você não fez nada");
-                        IO.println("Você recebeu um golpe critico e morreu");
-                        System.exit(0);
-
-                    } else if (escolha.trim().equalsIgnoreCase("ataque base")) {
-                        IO.println("Você utilizou o ataque base");
-                        personagem.registrarCombate();
-                        IO.println(nome + " ganhou a luta");
-
-                    } else if (escolha.trim().equalsIgnoreCase("gravitacao")) {
-                       boolean sucesso = personagem.usarGravitacao();
-
-                    if (sucesso) {
-                        IO.println("A Gravitação funcionou! Seu golpe acertou o inimigo.");
-                        personagem.registrarCombate();
-                        IO.println(nome + " ganhou a luta");
-                    } else {
-                        IO.println("A Gravitação falhou!");
-                    }
-
-                } else if (escolha.trim().equalsIgnoreCase("fixacao")) {
-                       boolean sucesso = personagem.usarFixacao();
-
-                       if (sucesso) {
-                           IO.println("Você usou a Fixacao, prendeu seu inimigo na parede e deu multiplos socos nele");
-                           personagem.registrarCombate();
-                           IO.println(nome + " ganhou a luta");
-                       } else {
-                           IO.println("A Fixacao falhou!");
-                       }
-                    }
-                } else {
-                    IO.println("Ataque invalido");
+                case "1" -> {
+                    IO.println("{[======================================]}");
+                    IO.println(" |     Milenios atrás, na época das     |");
+                    IO.println(" |    Desolações, a humanidade estava   |");
+                    IO.println(" |      prestes a ser extinta pelos     |");
+                    IO.println(" |      Esvaziadores... Até que Deus    |");
+                    IO.println(" |     deu vida aos chamados Arautos,   |");
+                    IO.println(" |     10 humanos imortais capazes de   |");
+                    IO.println(" |       se vincular aos Esprenos,      |");
+                    IO.println(" |      e aprisionar os Esvaziadores    |");
+                    IO.println(" |    no Braize... E ao aprisioná-los   |");
+                    IO.println(" |     a cada Desolação que passava     |");
+                    IO.println(" |     sofrerem todo tipo de tortura    |");
+                    IO.println(" |  para nos livrar da guerra e da dor  |");
+                    IO.println(" |     e nos dar esperança novamente... |");
+                    IO.println("{[======================================]}");
                 }
 
-            } else if (acao.equalsIgnoreCase("defender")) {
-              personagem.defender();
-              IO.println(nome + " se Defendeu");
+                case "2" -> {
+                    IO.println("{[=======================]}");
+                    IO.println(" |  Um homem nascido em  |");
+                    IO.println(" |  uma vila do interior |");
+                    IO.println(" |     de Roshar, um     |");
+                    IO.println(" |    Zé-Ninguém, que    |");
+                    IO.println(" |   foi convocado para  |");
+                    IO.println(" |   lutar e defender    |");
+                    IO.println(" |      sua pátria.      |");
+                    IO.println("{[=======================]}");
+                }
 
-            } else if (acao.equalsIgnoreCase("esquivar")) {
+                case "3" -> {
+                    IO.println("\n!!! UM PARSHEDIANO APARECEU !!!");
+                    IO.println("[ atacar | defender | esquivar | fugir ]");
+                    String acao = IO.readln("Escolha sua ação: ");
 
+                    if (acao == null || acao.isBlank()) {
+                        IO.println("Você hesitou e foi atingido! Fim de jogo.");
+                        System.exit(0);
+                    }
 
-            } else if (acao.equalsIgnoreCase("fugir")) {
-                IO.println(nome + " Fugiu");
+                    String acaoLimpa = acao.trim().toLowerCase();
 
-            } else {
-            IO.println("Opção invalida");
-        }
+                    if (acaoLimpa.equals("atacar")) {
+                        if (!personagem.temPrimeiroIdeal()) {
+                            IO.println("Ações disponíveis: [ ataque base ]");
+                            String escolha = IO.readln("Confirme seu ataque: ");
 
-        } else if (menu.equals("4")) {
-            personagem.mostrarStatus();
+                            if (escolha != null && escolha.trim().equalsIgnoreCase("ataque base")) {
+                                IO.println("Você utilizou o ataque base e derrotou o inimigo!");
+                                personagem.registrarCombate();
+                            } else {
+                                IO.println("Ataque falhou! Você recebeu um golpe crítico.");
+                            }
 
+                        } else if (personagem.temTerceiroIdeal()) {
+                            IO.println("Ações disponíveis: [ ataque base | espada fractal ]");
+                            String escolha = IO.readln("Escolha a forma de ataque: ");
 
-        } else if (menu.equals("5")) {
-            IO.println("Você desistiu da jornada...");
-            System.exit(0);
+                            if (escolha != null && escolha.trim().equalsIgnoreCase("espada fractal")) {
+                                boolean sucesso = personagem.usarEspadaFractal();
+                                if (sucesso) {
+                                    IO.println(personagem.getNome() + " venceu a luta com a Espada Fractal!");
+                                    personagem.registrarCombate();
+                                } else {
+                                    IO.println("O ataque com a Espada Fractal falhou!");
+                                }
+                            } else if (escolha != null && escolha.trim().equalsIgnoreCase("ataque base")) {
+                                IO.println("Você utilizou o ataque base e venceu a luta!");
+                                personagem.registrarCombate();
+                            } else {
+                                IO.println("Ação de ataque inválida!");
+                            }
 
-        } else if (menu.equals("6") && personagem.podeFalarPrimeiroIdeal()) {
-            IO.println("{[==========================]}");
-            IO.println(" |                          |");
-            IO.println(" |    Vida antes da Morte,  |");
-            IO.println(" |  Forca antes da Fraqueza,|");
-            IO.println(" | Jornada antes do Destino |");
-            IO.println(" |                          |");
-            IO.println("{[==========================]}");
-            String resposta = IO.readln("DIGA O JURAMENTO: ");
+                        } else {
+                            IO.println("Ações disponíveis: [ ataque base | gravitacao | fixacao ]");
+                            String escolha = IO.readln("Escolha a forma de ataque: ");
 
-            if (personagem.pronunciarPrimeiroIdeal(resposta)) {
-                IO.println("ESTAS PALAVRAS FORAM ACEITAS");
-            } else {
-                IO.println("ESTAS PALAVRAS NÃO SÃO ACEITAS");
+                            if (escolha != null && escolha.trim().equalsIgnoreCase("gravitacao")) {
+                                boolean sucesso = personagem.usarGravitacao();
+                                if (sucesso) {
+                                    IO.println(personagem.getNome() + " venceu a luta usando Gravitação!");
+                                    personagem.registrarCombate();
+                                } else {
+                                    IO.println("A Gravitação falhou!");
+                                }
+                            } else if (escolha != null && escolha.trim().equalsIgnoreCase("fixacao")) {
+                                boolean sucesso = personagem.usarFixacao();
+                                if (sucesso) {
+                                    IO.println(personagem.getNome() + " venceu a luta usando Fixação!");
+                                    personagem.registrarCombate();
+                                } else {
+                                    IO.println("A Fixação falhou!");
+                                }
+                            } else if (escolha != null && escolha.trim().equalsIgnoreCase("ataque base")) {
+                                IO.println("Você utilizou o ataque base e venceu a luta!");
+                                personagem.registrarCombate();
+                            } else {
+                                IO.println("Ação de ataque inválida!");
+                            }
+                        }
+
+                    } else if (acaoLimpa.equals("defender")) {
+                        personagem.defender();
+                        IO.println(personagem.getNome() + " se defendeu com o escudo!");
+
+                    } else if (acaoLimpa.equals("esquivar")) {
+                        personagem.esquivar();
+
+                    } else if (acaoLimpa.equals("fugir")) {
+                        IO.println(personagem.getNome() + " fugiu da batalha com segurança.");
+
+                    } else {
+                        IO.println("Opção de combate inválida!");
+                    }
+                }
+
+                case "4" -> personagem.mostrarStatus();
+
+                case "5" -> {
+                    IO.println("Você desistiu da jornada em Roshar...");
+                    System.exit(0);
+                }
+
+                case "6" -> {
+                    if (personagem.podeFalarPrimeiroIdeal()) {
+                        IO.println("{[=====================================]}");
+                        IO.println(" |  Vida antes da Morte,               |");
+                        IO.println(" |  Forca antes da Fraqueza,           |");
+                        IO.println(" |  Jornada antes do Destino           |");
+                        IO.println("{[=====================================]}");
+                        String resposta = IO.readln("RECITE O PRIMEIRO IDEAL: ");
+
+                        if (personagem.pronunciarPrimeiroIdeal(resposta)) {
+                            IO.println("\n!!! ESTAS PALAVRAS FORAM ACEITAS !!!");
+                            IO.println("Você agora tem acesso aos poderes base do Primeiro Ideal!");
+                        } else {
+                            IO.println("\n!!! ESTAS PALAVRAS NÃO FORAM ACEITAS !!!");
+                        }
+
+                    } else if (personagem.segundoIdealLiberado()) {
+                        IO.println("{[=====================================]}");
+                        IO.println(" |    ESCOLHA SUA ORDEM DE RADIANTE:   |");
+                        IO.println(" |                                     |");
+                        IO.println(" |   WindRunners        SkyBreakers    |");
+                        IO.println(" |    Proteção            Justiça      |");
+                        IO.println(" |                                     |");
+                        IO.println(" |   LightWeavers        BondsMiths    |");
+                        IO.println(" |     Verdade            Vinculo      |");
+                        IO.println("{[=====================================]}");
+
+                        String escolhaOrdem = IO.readln("Escolha a Ordem à qual deseja pertencer: ");
+
+                        if (escolhaOrdem == null) break;
+
+                        Radiantes ordemCriada = null;
+                        String op = escolhaOrdem.trim().toLowerCase();
+
+                        if (op.equals("windrunners")) ordemCriada = new WindRunners();
+                        else if (op.equals("skybreakers")) ordemCriada = new SkyBreakers();
+                        else if (op.equals("lightweavers")) ordemCriada = new LightWeavers();
+                        else if (op.equals("bondsmiths")) ordemCriada = new BondsMiths();
+
+                        if (ordemCriada != null) {
+                            ordemCriada.exibirProximoJuramento();
+                            String juramento = IO.readln("RECITE O 2º JURAMENTO: ");
+
+                            if (ordemCriada.verificarJuramento(juramento)) {
+                                IO.println("\n!!! ESTAS PALAVRAS FORAM ACEITAS !!!");
+                                personagem.setOrdem(ordemCriada);
+                                IO.println("Você agora pertence à Ordem dos " + ordemCriada.getOrdem() + "!");
+                            } else {
+                                IO.println("\n!!! ESTAS PALAVRAS NÃO FORAM ACEITAS !!!");
+                            }
+                        } else {
+                            IO.println("Ordem inválida!");
+                        }
+
+                    } else if (personagem.proximoIdealLiberado()) {
+                        Radiantes ordem = personagem.getOrdem();
+                        ordem.exibirProximoJuramento();
+                        String juramento = IO.readln("RECITE O SEU PRÓXIMO JURAMENTO: ");
+
+                        if (ordem.verificarJuramento(juramento)) {
+                            IO.println("\n!!! ESTAS PALAVRAS FORAM ACEITAS !!!");
+                            IO.println("Você subiu para o " + ordem.getNivelJuramento() + "º Nível de Juramento!");
+                        } else {
+                            IO.println("\n!!! ESTAS PALAVRAS NÃO FORAM ACEITAS !!!");
+                        }
+
+                    } else {
+                        IO.println("Opção inválida, tente novamente.");
+                    }
+                }
+
+                default -> IO.println("Opção inválida, tente novamente.");
             }
-        } else if (menu.equals("6") && personagem.segundoIdeal()) {
-            IO.println("{[=====================================]}");
-            IO.println(" |                                     |");
-            IO.println(" |   WindRunners         SkyBreakers   |");
-            IO.println(" |    Proteger               Lei       |");
-            IO.println(" |                                     |");
-            IO.println(" |   LightWeavers        BondsMiths    |");
-            IO.println(" |     Verdade            Vinculo      |");
-            IO.println(" |                                     |");
-            IO.println("{[=====================================]}");
-            IO.println("[ WindRunners - SkyBreakers - LightWeavers - BondsMiths ]");
-            String resposta = IO.readln("ESCOLHA A ORDEM Á QUEM QUER PERTENCER: ");
-
-            if (ordemEscolhida != null) {
-              IO.println("Você ja pertence a uma ordem");
-
-
-            } else if (resposta.trim().equalsIgnoreCase("WindRunners")) {
-                ordemEscolhida = new WindRunners();
-                ((WindRunners) ordemEscolhida) .segundoIdeal();
-                 resposta = IO.readln("DIGA O JURAMENTO: ");
-
-
-
-            } else if (resposta.trim().equalsIgnoreCase("SkyBreakers")) {
-                ordemEscolhida = new SkyBreakers();
-                ((SkyBreakers) ordemEscolhida) .segundoIdeal();
-                resposta = IO.readln("DIGA O JURAMENTO: ");
-
-            } else if (resposta.trim().equalsIgnoreCase("LightWeavers")) {
-
-
-            } else if (resposta.trim().equalsIgnoreCase("BondsMiths")) {
-                ordemEscolhida = new BondsMiths();
-                ((BondsMiths) ordemEscolhida) .segundoIdeal();
-                resposta = IO.readln("DIGA O JURAMENTO: ");
-
-            } else {
-                IO.println("Ordem invalida");
-            }
-
-        } else {
-            IO.println("Escolha a opção do menu");
         }
-
     }
-
 }
-
-

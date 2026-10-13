@@ -1,61 +1,62 @@
-public class BondsMiths extends Radiantes{
+public class BondsMiths extends Radiantes {
 
     private int nivelJuramento;
     private String segundoJuramento;
     private String terceiroJuramento;
-
-    private String palavraChave;
-    private String poderes;
+    private String quartoJuramento;
 
     public BondsMiths() {
-        super("Vinculadores", "União", "Divindade");
-
-        this.palavraChave = "União";
-        this.poderes = "Adesão e Tensão";
-
+        super("Vinculadores", "União", "Pai das Tempestades", "Adesao e Tensao");
         this.nivelJuramento = 1;
-
-        this.segundoJuramento = "Unirei ao invez de dividir";
-
-        this.terceiroJuramento = "Assumirei a responsabilidade pelas coisas que fiz no passado," +
-                " e me levantarei cada vez como um homem melhor";
-
-    }
-
-    public void segundoIdeal() {
-
-        IO.println("{[====================]}");
-        IO.println(" |                    |");
-        IO.println(" |   Unirei ao invez  |");
-        IO.println(" |     De dividir     |");
-        IO.println(" |                    |");
-        IO.println("{[====================]}");
-
+        this.segundoJuramento = "Unirei ao inves de dividir";
+        this.terceiroJuramento = "Assumirei a responsabilidade pelas coisas que fiz";
+        this.quartoJuramento = "Me levantarei cada vez um homem melhor";
     }
 
     @Override
-    public boolean verificarJuramento(String resposta){
+    public int getNivelJuramento() {
+        return nivelJuramento;
+    }
 
-        if (resposta == null) {
+    @Override
+    public void exibirProximoJuramento() {
+        IO.println("{[====================================]}");
+        if (nivelJuramento == 1) {
+            IO.println(" |  2º JURAMENTO:                      |");
+            IO.println(" |  Unirei ao inves de dividir         |");
+        } else if (nivelJuramento == 2) {
+            IO.println(" |  3º JURAMENTO:                      |");
+            IO.println(" |  Assumirei a responsabilidade pelas |");
+            IO.println(" |  coisas que fiz                     |");
+        } else if (nivelJuramento == 3) {
+            IO.println(" |  4º JURAMENTO:                      |");
+            IO.println(" |  Me levantarei cada vez um homem    |");
+            IO.println(" |  melhor                             |");
+        }
+        IO.println("{[====================================]}");
+    }
+
+    @Override
+    public boolean verificarJuramento(String resposta) {
+        if (resposta == null || resposta.isBlank()) {
             return false;
         }
 
-        if (nivelJuramento == 1 && resposta.equalsIgnoreCase(segundoJuramento)){
+        String resp = resposta.trim();
+
+        if (nivelJuramento == 1 && resp.equalsIgnoreCase(segundoJuramento)) {
             nivelJuramento++;
             return true;
         }
-
-        if (nivelJuramento == 2 && resposta.equalsIgnoreCase(terceiroJuramento)){
+        if (nivelJuramento == 2 && resp.equalsIgnoreCase(terceiroJuramento)) {
             nivelJuramento++;
             return true;
         }
-
+        if (nivelJuramento == 3 && resp.equalsIgnoreCase(quartoJuramento)) {
+            nivelJuramento++;
+            return true;
+        }
 
         return false;
     }
-
-
-    }
-
-
-
+}

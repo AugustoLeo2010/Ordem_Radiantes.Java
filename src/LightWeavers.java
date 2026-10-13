@@ -1,54 +1,41 @@
-public class LightWeavers extends Radiantes{
+public class LightWeavers extends Radiantes {
 
     private int nivelJuramento;
-    private String segundoJuramento;
-    private String terceiroJuramento;
-    private String quartoJuramento;
-
-    private String palavraChave;
-    private String poderes;
 
     public LightWeavers() {
-        super("Teceluzes", "Verdade", "Criptidios");
-
-        this.palavraChave = "Justiça";
-        this.poderes = "Adesão e Gravitação";
-
+        super("Teceluzes", "Verdade", "Criptidio", "Iluminacao e Transmutacao");
         this.nivelJuramento = 1;
-
-        this.segundoJuramento = " Diga sua Verdade";
-
-        this.terceiroJuramento = "Diga sua Verdade";
-
-        this.quartoJuramento = "Diga sua Verdade";
-
-
     }
 
     @Override
-    public boolean verificarJuramento(String resposta){
-
-        if (resposta == null) {
-            return false;
-        }
-
-        if (nivelJuramento == 1 && resposta.equalsIgnoreCase(segundoJuramento)){
-            nivelJuramento++;
-            return true;
-        }
-
-        if (nivelJuramento == 2 && resposta.equalsIgnoreCase(terceiroJuramento)){
-            nivelJuramento++;
-            return true;
-        }
-
-        if (nivelJuramento == 2 && resposta.equalsIgnoreCase(quartoJuramento)){
-            nivelJuramento++;
-            return true;
-        }
-
-        return false;
+    public int getNivelJuramento() {
+        return nivelJuramento;
     }
 
+    @Override
+    public void exibirProximoJuramento() {
+        IO.println("{[====================================]}");
+        if (nivelJuramento == 1) {
+            IO.println(" |  2º JURAMENTO (VERDADE 1):         |");
+            IO.println(" |  Diga uma verdade profunda sobre si |");
+        } else if (nivelJuramento == 2) {
+            IO.println(" |  3º JURAMENTO (VERDADE 2):         |");
+            IO.println(" |  Diga quem voce verdadeiramente e  |");
+        } else if (nivelJuramento == 3) {
+            IO.println(" |  4º JURAMENTO (VERDADE 3):         |");
+            IO.println(" |  Encare seu maior medo ou segredo   |");
+        }
+        IO.println("{[====================================]}");
+    }
 
+    @Override
+    public boolean verificarJuramento(String resposta) {
+        if (resposta != null && resposta.trim().length() >= 3) {
+            if (nivelJuramento < 4) {
+                nivelJuramento++;
+                return true;
+            }
+        }
+        return false;
+    }
 }
