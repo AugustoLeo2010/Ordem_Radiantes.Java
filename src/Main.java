@@ -14,6 +14,7 @@ public static void main (String []args) {
     }
 
         Personagem personagem = new Personagem(nome);
+        Radiantes ordemEscolhida = null;
 
 
     String menu;
@@ -31,6 +32,10 @@ public static void main (String []args) {
 
         if (personagem.podeFalarPrimeiroIdeal()) {
             IO.println(" |  6.Primeiro Ideal  |");
+        } else if (personagem.segundoIdeal() && ordemEscolhida == null) {
+            IO.println(" |  6.Escolher Ordem  |");
+        } else {
+            IO.println(" |    6.Juramentos    |");
         }
 
         IO.println(" |                    |");
@@ -146,7 +151,8 @@ public static void main (String []args) {
                 }
 
             } else if (acao.equalsIgnoreCase("defender")) {
-
+              personagem.defender();
+              IO.println(nome + " se Defendeu");
 
             } else if (acao.equalsIgnoreCase("esquivar")) {
 
@@ -181,10 +187,50 @@ public static void main (String []args) {
             } else {
                 IO.println("ESTAS PALAVRAS NÃO SÃO ACEITAS");
             }
+        } else if (menu.equals("6") && personagem.segundoIdeal()) {
+            IO.println("{[=====================================]}");
+            IO.println(" |                                     |");
+            IO.println(" |   WindRunners         SkyBreakers   |");
+            IO.println(" |    Proteger               Lei       |");
+            IO.println(" |                                     |");
+            IO.println(" |   LightWeavers        BondsMiths    |");
+            IO.println(" |     Verdade            Vinculo      |");
+            IO.println(" |                                     |");
+            IO.println("{[=====================================]}");
+            IO.println("[ WindRunners - SkyBreakers - LightWeavers - BondsMiths ]");
+            String resposta = IO.readln("ESCOLHA A ORDEM Á QUEM QUER PERTENCER: ");
+
+            if (ordemEscolhida != null) {
+              IO.println("Você ja pertence a uma ordem");
+
+
+            } else if (resposta.trim().equalsIgnoreCase("WindRunners")) {
+                ordemEscolhida = new WindRunners();
+                ((WindRunners) ordemEscolhida) .segundoIdeal();
+                 resposta = IO.readln("DIGA O JURAMENTO: ");
+
+
+
+            } else if (resposta.trim().equalsIgnoreCase("SkyBreakers")) {
+                ordemEscolhida = new SkyBreakers();
+                ((SkyBreakers) ordemEscolhida) .segundoIdeal();
+                resposta = IO.readln("DIGA O JURAMENTO: ");
+
+            } else if (resposta.trim().equalsIgnoreCase("LightWeavers")) {
+
+
+            } else if (resposta.trim().equalsIgnoreCase("BondsMiths")) {
+                ordemEscolhida = new BondsMiths();
+                ((BondsMiths) ordemEscolhida) .segundoIdeal();
+                resposta = IO.readln("DIGA O JURAMENTO: ");
+
+            } else {
+                IO.println("Ordem invalida");
+            }
+
         } else {
             IO.println("Escolha a opção do menu");
         }
-
 
     }
 

@@ -65,7 +65,18 @@ public boolean usarFixacao() {
         return Math.random() < 0.5;
     }
 
+    public boolean defender() {
 
+     if (estamina < 25) {
+         estamina = 0;
+         IO.println("Você não tem estamina o suficiente para se defender");
+         return false;
+     }
+        estamina -= 25;
+        vida -= 10;
+
+        return Math.random() < 0.5;
+    }
 
     public boolean podeFalarPrimeiroIdeal() {
         return combateC >= 1 && !primeiroIdeal;
@@ -84,6 +95,9 @@ public boolean usarFixacao() {
     public boolean temPrimeiroIdeal() {
         return primeiroIdeal;
     }
+
+
+    public boolean segundoIdeal() { return combateC >= 3 && primeiroIdeal;}
 
     public void mostrarStatus() {
         IO.println("{[=================]}");

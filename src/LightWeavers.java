@@ -22,7 +22,6 @@ public class LightWeavers extends Radiantes{
 
         this.quartoJuramento = "Diga sua Verdade";
 
-        LightWeavers lightweavers = new LightWeavers();
 
     }
 

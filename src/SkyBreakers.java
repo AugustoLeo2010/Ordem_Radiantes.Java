@@ -22,7 +22,16 @@ public class SkyBreakers extends Radiantes{
 
         this.quartoJuramento = "Seguirei as Ordens de quem Tiver a razão";
 
-        SkyBreakers skyBreakers = new SkyBreakers();
+    }
+
+    public void segundoIdeal() {
+
+        IO.println("{[====================]}");
+        IO.println(" |                    |");
+        IO.println(" |   Colocarei a Lei  |");
+        IO.println(" |    Acima de Tudo   |");
+        IO.println(" |                    |");
+        IO.println("{[====================]}");
 
     }
 

@@ -20,8 +20,16 @@ public class BondsMiths extends Radiantes{
         this.terceiroJuramento = "Assumirei a responsabilidade pelas coisas que fiz no passado," +
                 " e me levantarei cada vez como um homem melhor";
 
+    }
 
-        BondsMiths bondsMiths = new BondsMiths();
+    public void segundoIdeal() {
+
+        IO.println("{[====================]}");
+        IO.println(" |                    |");
+        IO.println(" |   Unirei ao invez  |");
+        IO.println(" |     De dividir     |");
+        IO.println(" |                    |");
+        IO.println("{[====================]}");
 
     }
 
