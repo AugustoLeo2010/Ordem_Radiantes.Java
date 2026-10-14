@@ -22,13 +22,13 @@ public class SkyBreakers extends Radiantes {
     public void exibirProximoIdeal() {
         IO.println("{[====================================]}");
         if (nivelJuramento == 1) {
-            IO.println(" |  2º JURAMENTO:                     |");
+            IO.println(" |  2º IDEAL:                         |");
             IO.println(" |  Colocarei a Lei acima de tudo     |");
         } else if (nivelJuramento == 2) {
-            IO.println(" |  3º JURAMENTO:                     |");
+            IO.println(" |  3º IDEAL:                         |");
             IO.println(" |  Dedicarei-me a um codigo          |");
         } else if (nivelJuramento == 3) {
-            IO.println(" |  4º JURAMENTO:                     |");
+            IO.println(" |  4º IDEAL:                         |");
             IO.println(" |  Seguirei as ordens de quem tiver  |");
             IO.println(" |  razao                             |");
         }

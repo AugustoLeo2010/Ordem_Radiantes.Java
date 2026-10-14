@@ -22,14 +22,14 @@ public class BondsMiths extends Radiantes {
     public void exibirProximoIdeal() {
         IO.println("{[====================================]}");
         if (nivelJuramento == 1) {
-            IO.println(" |  2º JURAMENTO:                     |");
+            IO.println(" |  2º IDEAL:                         |");
             IO.println(" |  Unirei ao inves de dividir        |");
         } else if (nivelJuramento == 2) {
-            IO.println(" |  3º JURAMENTO:                     |");
+            IO.println(" |  3º IDEAL:                         |");
             IO.println(" |  Assumirei a responsabilidade      |");
             IO.println(" |  pelas coisas que fiz              |");
         } else if (nivelJuramento == 3) {
-            IO.println(" |  4º JURAMENTO:                     |");
+            IO.println(" |  4º IDEAL:                         |");
             IO.println(" |  Me levantarei cada vez um como    |");
             IO.println(" |  homem melhor                      |");
         }
