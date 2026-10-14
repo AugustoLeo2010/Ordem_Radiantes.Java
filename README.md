@@ -7,7 +7,7 @@ Tema: *Os Relatos das Guerras das Tempestades* (Brandon Sanderson)
 ## Integrantes da Dupla
 
 Integrante 1: [Augusto Leo]
-Integrante 2: [Nome Completo do Aluno 2]
+Integrante 2: [Guilherme Henrique]
 
 ## Descrição do Projeto
 
