@@ -86,89 +86,94 @@ public class Main {
                 }
 
                 case "3" -> {
+
                     IO.println("\n!!! UM PARSHEDIANO APARECEU !!!");
-                    IO.println("[ atacar | defender | esquivar | fugir ]");
-                    String acao = IO.readln("Escolha sua ação: ");
+                        IO.println("[ atacar | defender | esquivar | fugir ]");
+                        String acao = IO.readln("Escolha sua ação: ");
 
-                    if (acao == null || acao.isBlank()) {
-                        IO.println("Você hesitou e foi atingido! Fim de jogo.");
-                        System.exit(0);
-                    }
-
-                    String acaoLimpa = acao.trim().toLowerCase();
-
-                    if (acaoLimpa.equals("atacar")) {
-                        if (!personagem.temPrimeiroIdeal()) {
-                            IO.println("Ações disponíveis: [ ataque base ]");
-                            String escolha = IO.readln("Confirme seu ataque: ");
-
-                            if (escolha != null && escolha.trim().equalsIgnoreCase("ataque base")) {
-                                IO.println("Você utilizou o ataque base e derrotou o inimigo!");
-                                personagem.registrarCombate();
-                            } else {
-                                IO.println("Ataque falhou! Você recebeu um golpe crítico.");
-                            }
-
-                        } else if (personagem.temTerceiroIdeal()) {
-                            IO.println("Ações disponíveis: [ ataque base | espada fractal ]");
-                            String escolha = IO.readln("Escolha a forma de ataque: ");
-
-                            if (escolha != null && escolha.trim().equalsIgnoreCase("espada fractal")) {
-                                boolean sucesso = personagem.usarEspadaFractal();
-                                if (sucesso) {
-                                    IO.println(personagem.getNome() + " venceu a luta com a Espada Fractal!");
-                                    personagem.registrarCombate();
-                                } else {
-                                    IO.println("O ataque com a Espada Fractal falhou!");
-                                }
-                            } else if (escolha != null && escolha.trim().equalsIgnoreCase("ataque base")) {
-                                IO.println("Você utilizou o ataque base e venceu a luta!");
-                                personagem.registrarCombate();
-                            } else {
-                                IO.println("Ação de ataque inválida!");
-                            }
-
-                        } else {
-                            IO.println("Ações disponíveis: [ ataque base | gravitacao | fixacao ]");
-                            String escolha = IO.readln("Escolha a forma de ataque: ");
-
-                            if (escolha != null && escolha.trim().equalsIgnoreCase("gravitacao")) {
-                                boolean sucesso = personagem.usarGravitacao();
-                                if (sucesso) {
-                                    IO.println(personagem.getNome() + " venceu a luta usando Gravitação!");
-                                    personagem.registrarCombate();
-                                } else {
-                                    IO.println("A Gravitação falhou!");
-                                }
-                            } else if (escolha != null && escolha.trim().equalsIgnoreCase("fixacao")) {
-                                boolean sucesso = personagem.usarFixacao();
-                                if (sucesso) {
-                                    IO.println(personagem.getNome() + " venceu a luta usando Fixação!");
-                                    personagem.registrarCombate();
-                                } else {
-                                    IO.println("A Fixação falhou!");
-                                }
-                            } else if (escolha != null && escolha.trim().equalsIgnoreCase("ataque base")) {
-                                IO.println("Você utilizou o ataque base e venceu a luta!");
-                                personagem.registrarCombate();
-                            } else {
-                                IO.println("Ação de ataque inválida!");
-                            }
+                        if (acao == null || acao.isBlank()) {
+                            IO.println("Você hesitou e foi atingido! Fim de jogo.");
+                            System.exit(0);
                         }
 
-                    } else if (acaoLimpa.equals("defender")) {
-                        personagem.defender();
-                        IO.println(personagem.getNome() + " se defendeu com o escudo!");
+                        String acaoLimpa = acao.trim().toLowerCase();
 
-                    } else if (acaoLimpa.equals("esquivar")) {
-                        personagem.esquivar();
+                        if (acaoLimpa.equals("atacar")) {
+                            if (!personagem.temPrimeiroIdeal()) {
+                                IO.println("Ações disponíveis: [ ataque base ]");
+                                String escolha = IO.readln("Confirme seu ataque: ");
 
-                    } else if (acaoLimpa.equals("fugir")) {
-                        IO.println(personagem.getNome() + " fugiu da batalha com segurança.");
+                                if (escolha != null && escolha.trim().equalsIgnoreCase("ataque base")) {
+                                    IO.println("Você utilizou o ataque base e derrotou o inimigo!");
+                                    personagem.registrarCombate();
+                                } else {
+                                    IO.println("Ataque falhou! Você recebeu um golpe crítico.");
+                                }
 
-                    } else {
-                        IO.println("Opção de combate inválida!");
-                    }
+                            } else if (personagem.temTerceiroIdeal()) {
+                                IO.println("Ações disponíveis: [ ataque base | espada fractal ]");
+                                String escolha = IO.readln("Escolha a forma de ataque: ");
+
+                                if (escolha != null && escolha.trim().equalsIgnoreCase("espada fractal")) {
+                                    boolean sucesso = personagem.usarEspadaFractal();
+                                    if (sucesso) {
+                                        IO.println(personagem.getNome() + " venceu a luta com a Espada Fractal!");
+                                        personagem.registrarCombate();
+                                    } else {
+                                        IO.println("O ataque com a Espada Fractal falhou!");
+                                    }
+                                } else if (escolha != null && escolha.trim().equalsIgnoreCase("ataque base")) {
+                                    IO.println("Você utilizou o ataque base e venceu a luta!");
+                                    personagem.registrarCombate();
+                                } else {
+                                    IO.println("Ação de ataque inválida!");
+                                }
+
+                            } else {
+                                IO.println("Ações disponíveis: [ ataque base | gravitacao | fixacao ]");
+                                String escolha = IO.readln("Escolha a forma de ataque: ");
+
+                                if (escolha != null && escolha.trim().equalsIgnoreCase("gravitacao")) {
+                                    boolean sucesso = personagem.usarGravitacao();
+                                    if (sucesso) {
+                                        IO.println(personagem.getNome() + " venceu a luta usando Gravitação!");
+                                        personagem.registrarCombate();
+                                    } else {
+                                        IO.println("A Gravitação falhou!");
+                                    }
+                                } else if (escolha != null && escolha.trim().equalsIgnoreCase("fixacao")) {
+                                    boolean sucesso = personagem.usarFixacao();
+                                    if (sucesso) {
+                                        IO.println(personagem.getNome() + " venceu a luta usando Fixação!");
+                                        personagem.registrarCombate();
+                                    } else {
+                                        IO.println("A Fixação falhou!");
+                                    }
+                                } else if (escolha != null && escolha.trim().equalsIgnoreCase("ataque base")) {
+                                    IO.println("Você utilizou o ataque base e venceu a luta!");
+                                    personagem.registrarCombate();
+                                } else {
+                                    IO.println("Ação de ataque inválida!");
+                                }
+                            }
+
+                        } else if (acaoLimpa.equals("defender")) {
+                            personagem.defender();
+                            IO.println(personagem.getNome() + " se defendeu com o escudo!");
+                            IO.println("");
+
+                        } else if (acaoLimpa.equals("esquivar")) {
+                            personagem.esquivar();
+                            IO.println("");
+
+
+                        } else if (acaoLimpa.equals("fugir")) {
+                            IO.println(personagem.getNome() + " fugiu da batalha com segurança.");
+
+                        } else {
+                            IO.println("Opção de combate inválida!");
+                        }
+
                 }
 
                 case "4" -> personagem.mostrarStatus();
