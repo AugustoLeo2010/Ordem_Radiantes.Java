@@ -58,6 +58,7 @@ public class Main {
                     IO.println(" |      prestes a ser extinta pelos     |");
                     IO.println(" |      Esvaziadores... Até que Deus    |");
                     IO.println(" |     deu vida aos chamados Arautos,   |");
+                    IO.println(" |   criadores das Ordens de Radiantes, |");
                     IO.println(" |     10 humanos imortais capazes de   |");
                     IO.println(" |       se vincular aos Esprenos,      |");
                     IO.println(" |      e aprisionar os Esvaziadores    |");
@@ -65,7 +66,9 @@ public class Main {
                     IO.println(" |     a cada Desolação que passava     |");
                     IO.println(" |     sofrerem todo tipo de tortura    |");
                     IO.println(" |  para nos livrar da guerra e da dor  |");
-                    IO.println(" |     e nos dar esperança novamente... |");
+                    IO.println(" |  ...e nos dar esperança novamente... |");
+                    IO.println(" |   ...até que a proxima Desolação...  |");
+                    IO.println(" |            ...Começasse...           |");
                     IO.println("{[======================================]}");
                 }
 
@@ -76,8 +79,9 @@ public class Main {
                     IO.println(" |     de Roshar, um     |");
                     IO.println(" |    Zé-Ninguém, que    |");
                     IO.println(" |   foi convocado para  |");
-                    IO.println(" |   lutar e defender    |");
-                    IO.println(" |      sua pátria.      |");
+                    IO.println(" |    lutar contra os    |");
+                    IO.println(" |     Parshedianos e    |");
+                    IO.println(" |      vingar o Rei     |");
                     IO.println("{[=======================]}");
                 }
 
@@ -185,7 +189,7 @@ public class Main {
 
                         if (personagem.pronunciarPrimeiroIdeal(resposta)) {
                             IO.println("\n!!! ESTAS PALAVRAS FORAM ACEITAS !!!");
-                            IO.println("Você agora tem acesso aos poderes base do Primeiro Ideal!");
+                            IO.println("Você agora tem acesso aos poderes base dos Radiantes!");
                         } else {
                             IO.println("\n!!! ESTAS PALAVRAS NÃO FORAM ACEITAS !!!");
                         }
@@ -214,10 +218,10 @@ public class Main {
                         else if (op.equals("bondsmiths")) ordemCriada = new BondsMiths();
 
                         if (ordemCriada != null) {
-                            ordemCriada.exibirProximoJuramento();
-                            String juramento = IO.readln("RECITE O 2º JURAMENTO: ");
+                            ordemCriada.exibirProximoIdeal();
+                            String juramento = IO.readln("RECITE O 2º IDEAL: ");
 
-                            if (ordemCriada.verificarJuramento(juramento)) {
+                            if (ordemCriada.verificarIdeal(juramento)) {
                                 IO.println("\n!!! ESTAS PALAVRAS FORAM ACEITAS !!!");
                                 personagem.setOrdem(ordemCriada);
                                 IO.println("Você agora pertence à Ordem dos " + ordemCriada.getOrdem() + "!");
@@ -230,12 +234,12 @@ public class Main {
 
                     } else if (personagem.proximoIdealLiberado()) {
                         Radiantes ordem = personagem.getOrdem();
-                        ordem.exibirProximoJuramento();
+                        ordem.exibirProximoIdeal();
                         String juramento = IO.readln("RECITE O SEU PRÓXIMO JURAMENTO: ");
 
-                        if (ordem.verificarJuramento(juramento)) {
+                        if (ordem.verificarIdeal(juramento)) {
                             IO.println("\n!!! ESTAS PALAVRAS FORAM ACEITAS !!!");
-                            IO.println("Você subiu para o " + ordem.getNivelJuramento() + "º Nível de Juramento!");
+                            IO.println("Você subiu para o " + ordem.getNivelIdeal() + "º Nível de Juramento!");
                         } else {
                             IO.println("\n!!! ESTAS PALAVRAS NÃO FORAM ACEITAS !!!");
                         }

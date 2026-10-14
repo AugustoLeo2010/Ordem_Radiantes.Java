@@ -14,12 +14,12 @@ public class SkyBreakers extends Radiantes {
     }
 
     @Override
-    public int getNivelJuramento() {
+    public int getNivelIdeal() {
         return nivelJuramento;
     }
 
     @Override
-    public void exibirProximoJuramento() {
+    public void exibirProximoIdeal() {
         IO.println("{[====================================]}");
         if (nivelJuramento == 1) {
             IO.println(" |  2º JURAMENTO:                     |");
@@ -36,7 +36,7 @@ public class SkyBreakers extends Radiantes {
     }
 
     @Override
-    public boolean verificarJuramento(String resposta) {
+    public boolean verificarIdeal(String resposta) {
         if (resposta == null || resposta.isBlank()) {
             return false;
         }

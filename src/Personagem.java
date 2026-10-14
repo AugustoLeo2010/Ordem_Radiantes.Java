@@ -41,7 +41,7 @@ public class Personagem {
     }
 
     public boolean temTerceiroIdeal() {
-        return ordem != null && ordem.getNivelJuramento() >= 3;
+        return ordem != null && ordem.getNivelIdeal() >= 3;
     }
 
     public Radiantes getOrdem() {
@@ -70,7 +70,7 @@ public class Personagem {
 
     public boolean proximoIdealLiberado() {
         if (ordem == null) return false;
-        int nivelActual = ordem.getNivelJuramento();
+        int nivelActual = ordem.getNivelIdeal();
         if (nivelActual == 2) return combateC >= 6;
         if (nivelActual == 3) return combateC >= 8;
         return false;
@@ -152,13 +152,13 @@ public class Personagem {
         IO.println(" |  Vida: " + vida + "/" + vidaMaxima);
         IO.println(" |  Estamina: " + estamina + "/" + estaminaMaxima);
         IO.println(" |  Combates Vencidos: " + combateC);
-        IO.println(" |  1º Ideal: " + (primeiroIdeal ? "Aceito" : "Pendente (Requer 2 vitórias)"));
         if (ordem != null) {
             IO.println(" |  Ordem: " + ordem.getOrdem());
-            IO.println(" |  Nível do Juramento: " + ordem.getNivelJuramento() + "º Ideal");
+            IO.println(" |  Nível do Juramento: " + ordem.getNivelIdeal() + "º Ideal");
             IO.println(" |  Poderes: " + ordem.getPoderes());
+            IO.println(" |  Espreno: " + ordem.getEspreno());
         } else {
-            IO.println(" |  Ordem: Sem Vínculo Radiante (Requer 4 vitórias + 1º Ideal)");
+            IO.println(" |  Ordem: Sem Vínculo Radiante");
         }
         IO.println("{[=====================================]}");
     }

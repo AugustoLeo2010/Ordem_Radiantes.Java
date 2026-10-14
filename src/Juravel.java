@@ -1,5 +1,5 @@
 public interface Juravel {
-    boolean verificarJuramento(String resposta);
-    void exibirProximoJuramento();
-    int getNivelJuramento();
+    boolean verificarIdeal(String resposta);
+    void exibirProximoIdeal();
+    int getNivelIdeal();
 }

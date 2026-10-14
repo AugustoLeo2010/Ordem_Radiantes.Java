@@ -14,30 +14,30 @@ public class WindRunners extends Radiantes {
     }
 
     @Override
-    public int getNivelJuramento() {
+    public int getNivelIdeal() {
         return nivelJuramento;
     }
 
     @Override
-    public void exibirProximoJuramento() {
+    public void exibirProximoIdeal() {
         IO.println("{[====================================]}");
         if (nivelJuramento == 1) {
-            IO.println(" |  2º JURAMENTO:                      |");
+            IO.println(" |  2º IDEAL:                          |");
             IO.println(" |  Protegerei aqueles que nao podem   |");
             IO.println(" |  se proteger                        |");
         } else if (nivelJuramento == 2) {
-            IO.println(" |  3º JURAMENTO:                      |");
-            IO.println(" |  Protegerei até mesmo aqueles       |");
+            IO.println(" |  3º IDEAL:                          |");
+            IO.println(" |  Protegerei ate mesmo aqueles       |");
             IO.println(" |  que eu odeio                       |");
         } else if (nivelJuramento == 3) {
-            IO.println(" |  4º JURAMENTO:                      |");
+            IO.println(" |  4º IDEAL:                          |");
             IO.println(" |  Eu nao posso salvar todos          |");
         }
         IO.println("{[====================================]}");
     }
 
     @Override
-    public boolean verificarJuramento(String resposta) {
+    public boolean verificarIdeal(String resposta) {
         if (resposta == null || resposta.isBlank()) {
             return false;
         }

@@ -10,16 +10,16 @@ public class BondsMiths extends Radiantes {
         this.nivelJuramento = 1;
         this.segundoJuramento = "Unirei ao inves de dividir";
         this.terceiroJuramento = "Assumirei a responsabilidade pelas coisas que fiz";
-        this.quartoJuramento = "Me levantarei cada vez um homem melhor";
+        this.quartoJuramento = "Me levantarei cada vez como um homem melhor";
     }
 
     @Override
-    public int getNivelJuramento() {
+    public int getNivelIdeal() {
         return nivelJuramento;
     }
 
     @Override
-    public void exibirProximoJuramento() {
+    public void exibirProximoIdeal() {
         IO.println("{[====================================]}");
         if (nivelJuramento == 1) {
             IO.println(" |  2º JURAMENTO:                      |");
@@ -30,14 +30,14 @@ public class BondsMiths extends Radiantes {
             IO.println(" |  coisas que fiz                     |");
         } else if (nivelJuramento == 3) {
             IO.println(" |  4º JURAMENTO:                      |");
-            IO.println(" |  Me levantarei cada vez um homem    |");
-            IO.println(" |  melhor                             |");
+            IO.println(" |  Me levantarei cada vez um como     |");
+            IO.println(" |  homem melhor                       |");
         }
         IO.println("{[====================================]}");
     }
 
     @Override
-    public boolean verificarJuramento(String resposta) {
+    public boolean verificarIdeal(String resposta) {
         if (resposta == null || resposta.isBlank()) {
             return false;
         }
