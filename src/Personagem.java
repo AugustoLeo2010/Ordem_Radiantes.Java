@@ -33,7 +33,6 @@ public class Personagem {
 
     public void registrarCombate() {
         combateC++;
-        restaurarStatusAposCombate();
     }
 
     public boolean temPrimeiroIdeal() {
@@ -141,9 +140,24 @@ public class Personagem {
         }
     }
 
-    private void restaurarStatusAposCombate() {
-        this.vida = Math.min(vidaMaxima, vida + 30);
-        this.estamina = Math.min(estaminaMaxima, estamina + 50);
+    public void receberDanoInimigo() {
+        int dano = (int) (vidaMaxima * 0.25);
+        this.vida -= dano;
+        IO.println("\nO Parshediano reage e desfere um contra-ataque violento, tirando " + dano + " de vida!");
+        IO.println("   [ Vida Atual: " + Math.max(0, vida) + "/" + vidaMaxima + " ]");
+
+        if (this.vida <= 0) {
+            this.vida = 0;
+            IO.println("\n!!! VOCÊ NÃO RESISTIU AOS FERIMENTOS DO CONTRA-ATAQUE E CAIU EM COMBATE !!!");
+            IO.println("Fim de jogo...");
+            System.exit(0);
+        }
+    }
+
+    public void descansar() {
+        this.vida = this.vidaMaxima;
+        this.estamina = this.estaminaMaxima;
+        IO.println("Você dormiu profundamente... Sua Vida e Estamina foram totalmente restauradas!");
     }
 
     public void mostrarStatus() {

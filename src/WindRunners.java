@@ -10,7 +10,7 @@ public class WindRunners extends Radiantes {
         this.nivelJuramento = 1;
         this.segundoJuramento = "Protegerei aqueles que nao podem se proteger";
         this.terceiroJuramento = "Protegerei ate mesmo aqueles que eu odeio";
-        this.quartoJuramento = "Eu não posso salvar todos";
+        this.quartoJuramento = "Eu nao posso salvar todos";
     }
 
     @Override
@@ -22,16 +22,16 @@ public class WindRunners extends Radiantes {
     public void exibirProximoIdeal() {
         IO.println("{[====================================]}");
         if (nivelJuramento == 1) {
-            IO.println(" |  2º IDEAL:                          |");
-            IO.println(" |  Protegerei aqueles que nao podem   |");
-            IO.println(" |  se proteger                        |");
+            IO.println(" |  2º IDEAL:                         |");
+            IO.println(" |  Protegerei aqueles que nao podem  |");
+            IO.println(" |  se proteger                       |");
         } else if (nivelJuramento == 2) {
-            IO.println(" |  3º IDEAL:                          |");
-            IO.println(" |  Protegerei ate mesmo aqueles       |");
-            IO.println(" |  que eu odeio                       |");
+            IO.println(" |  3º IDEAL:                         |");
+            IO.println(" |  Protegerei ate mesmo aqueles      |");
+            IO.println(" |  que eu odeio                      |");
         } else if (nivelJuramento == 3) {
-            IO.println(" |  4º IDEAL:                          |");
-            IO.println(" |  Eu nao posso salvar todos          |");
+            IO.println(" |  4º IDEAL:                         |");
+            IO.println(" |  Eu nao posso salvar todos         |");
         }
         IO.println("{[====================================]}");
     }

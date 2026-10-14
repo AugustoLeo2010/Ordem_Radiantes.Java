@@ -18,32 +18,33 @@ public class Main {
 
         while (true) {
             IO.println("\n{[====================]}");
-            IO.println(" |      " + personagem.getNome() + "       |");
+            IO.println(" |  " + personagem.getNome() + "           |");
             IO.println(" |                    |");
-            IO.println(" |     1.Historia     |");
-            IO.println(" |   2.Informaçoes    |");
-            IO.println(" |      3.Lutar       |");
-            IO.println(" |     4.Status       |");
-            IO.println(" |      5.Sair        |");
+            IO.println(" |  1.Historia        |");
+            IO.println(" |  2.Informaçoes     |");
+            IO.println(" |  3.Descançar       |");
+            IO.println(" |  4.Lutar           |");
+            IO.println(" |  5.Status          |");
+            IO.println(" |  6.Sair            |");
 
             if (personagem.podeFalarPrimeiroIdeal()) {
-                IO.println(" |  6.Primeiro Ideal  |");
+                IO.println(" |  7.Primeiro Ideal  |");
                 IO.println("{[====================]}");
-                menu = IO.readln("O que você vai fazer (1-6): ");
+                menu = IO.readln("O que você vai fazer (1-7): ");
 
             } else if (personagem.segundoIdealLiberado()) {
-                IO.println(" |  6.Escolher Ordem  |");
+                IO.println(" |  7.Escolher Ordem  |");
                 IO.println("{[====================]}");
-                menu = IO.readln("O que você vai fazer (1-6): ");
+                menu = IO.readln("O que você vai fazer (1-7): ");
 
             } else if (personagem.proximoIdealLiberado()) {
-                IO.println(" |  6.Proximo Ideal   |");
+                IO.println(" |  7.Proximo Ideal   |");
                 IO.println("{[====================]}");
-                menu = IO.readln("O que você vai fazer (1-6): ");
+                menu = IO.readln("O que você vai fazer (1-7): ");
 
             } else {
                 IO.println("{[====================]}");
-                menu = IO.readln("O que você vai fazer (1-5): ");
+                menu = IO.readln("O que você vai fazer (1-6): ");
             }
 
 
@@ -86,8 +87,14 @@ public class Main {
                 }
 
                 case "3" -> {
+                    personagem.descansar();
+                }
 
+                case "4" -> {
                     IO.println("\n!!! UM PARSHEDIANO APARECEU !!!");
+                    int ataquesRealizados = 0;
+
+                    while (ataquesRealizados < 2) {
                         IO.println("[ atacar | defender | esquivar | fugir ]");
                         String acao = IO.readln("Escolha sua ação: ");
 
@@ -97,6 +104,7 @@ public class Main {
                         }
 
                         String acaoLimpa = acao.trim().toLowerCase();
+                        boolean ataqueAconteceu = false;
 
                         if (acaoLimpa.equals("atacar")) {
                             if (!personagem.temPrimeiroIdeal()) {
@@ -104,10 +112,11 @@ public class Main {
                                 String escolha = IO.readln("Confirme seu ataque: ");
 
                                 if (escolha != null && escolha.trim().equalsIgnoreCase("ataque base")) {
-                                    IO.println("Você utilizou o ataque base e derrotou o inimigo!");
-                                    personagem.registrarCombate();
+                                    IO.println("Você utilizou o ataque base e atingiu o inimigo!");
+                                    ataquesRealizados++;
+                                    ataqueAconteceu = true;
                                 } else {
-                                    IO.println("Ataque falhou! Você recebeu um golpe crítico.");
+                                    IO.println("Ataque falhou! Você errou o golpe.");
                                 }
 
                             } else if (personagem.temTerceiroIdeal()) {
@@ -117,14 +126,16 @@ public class Main {
                                 if (escolha != null && escolha.trim().equalsIgnoreCase("espada fractal")) {
                                     boolean sucesso = personagem.usarEspadaFractal();
                                     if (sucesso) {
-                                        IO.println(personagem.getNome() + " venceu a luta com a Espada Fractal!");
-                                        personagem.registrarCombate();
+                                        IO.println(personagem.getNome() + " desferiu um golpe devastador com a Espada Fractal!");
+                                        ataquesRealizados++;
+                                        ataqueAconteceu = true;
                                     } else {
                                         IO.println("O ataque com a Espada Fractal falhou!");
                                     }
                                 } else if (escolha != null && escolha.trim().equalsIgnoreCase("ataque base")) {
-                                    IO.println("Você utilizou o ataque base e venceu a luta!");
-                                    personagem.registrarCombate();
+                                    IO.println("Você utilizou o ataque base e atingiu o inimigo!");
+                                    ataquesRealizados++;
+                                    ataqueAconteceu = true;
                                 } else {
                                     IO.println("Ação de ataque inválida!");
                                 }
@@ -136,54 +147,62 @@ public class Main {
                                 if (escolha != null && escolha.trim().equalsIgnoreCase("gravitacao")) {
                                     boolean sucesso = personagem.usarGravitacao();
                                     if (sucesso) {
-                                        IO.println(personagem.getNome() + " venceu a luta usando Gravitação!");
-                                        personagem.registrarCombate();
+                                        IO.println(personagem.getNome() + " atingiu o inimigo usando Gravitação!");
+                                        ataquesRealizados++;
+                                        ataqueAconteceu = true;
                                     } else {
                                         IO.println("A Gravitação falhou!");
                                     }
                                 } else if (escolha != null && escolha.trim().equalsIgnoreCase("fixacao")) {
                                     boolean sucesso = personagem.usarFixacao();
                                     if (sucesso) {
-                                        IO.println(personagem.getNome() + " venceu a luta usando Fixação!");
-                                        personagem.registrarCombate();
+                                        IO.println(personagem.getNome() + " atingiu o inimigo usando Fixação!");
+                                        ataquesRealizados++;
+                                        ataqueAconteceu = true;
                                     } else {
                                         IO.println("A Fixação falhou!");
                                     }
                                 } else if (escolha != null && escolha.trim().equalsIgnoreCase("ataque base")) {
-                                    IO.println("Você utilizou o ataque base e venceu a luta!");
-                                    personagem.registrarCombate();
+                                    IO.println("Você utilizou o ataque base e atingiu o inimigo!");
+                                    ataquesRealizados++;
+                                    ataqueAconteceu = true;
                                 } else {
                                     IO.println("Ação de ataque inválida!");
                                 }
                             }
 
+                            if (ataqueAconteceu && ataquesRealizados == 1) {
+                                personagem.receberDanoInimigo();
+                            } else if (ataqueAconteceu && ataquesRealizados == 2) {
+                                IO.println("\n!!! VOCÊ DESFERIU O 2º ATAQUE E DERROTOU O PARSHEDIANO !!!");
+                                personagem.registrarCombate();
+                            }
+
                         } else if (acaoLimpa.equals("defender")) {
                             personagem.defender();
                             IO.println(personagem.getNome() + " se defendeu com o escudo!");
-                            IO.println("");
 
                         } else if (acaoLimpa.equals("esquivar")) {
                             personagem.esquivar();
-                            IO.println("");
-
 
                         } else if (acaoLimpa.equals("fugir")) {
                             IO.println(personagem.getNome() + " fugiu da batalha com segurança.");
+                            break;
 
                         } else {
                             IO.println("Opção de combate inválida!");
                         }
-
+                    }
                 }
 
-                case "4" -> personagem.mostrarStatus();
+                case "5" -> personagem.mostrarStatus();
 
-                case "5" -> {
+                case "6" -> {
                     IO.println("Você desistiu da jornada em Roshar...");
                     System.exit(0);
                 }
 
-                case "6" -> {
+                case "7" -> {
                     if (personagem.podeFalarPrimeiroIdeal()) {
                         IO.println("{[=====================================]}");
                         IO.println(" |  Vida antes da Morte,               |");
